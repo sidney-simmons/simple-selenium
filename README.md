@@ -10,7 +10,7 @@ simple-selenium is a gradle project meant to illustrate basic usage of Selenium 
 
 ## Usage
 
-Clone the repository and execute the following.  It should choose the correct driver for your operating system but I have only tested Windows.  Also note that you have to have Chrome version 81 installed as the driver is specific to that version.  Selenium has other driver options worth checking out.
+Clone the repository and execute the following.  It should choose the correct driver for your operating system but I have only tested Windows.  Also note that you need to have Chrome version 81 installed as the driver currently within the project is specific to that version.  Selenium has other driver options worth checking out.
 
 ```
 ./gradlew test
