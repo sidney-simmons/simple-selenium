@@ -1,0 +1,45 @@
+plugins {
+    id "com.sidneysimmons.gradle-plugin-external-properties" version "1.0.0"
+    id "java"
+}
+
+repositories {
+    mavenCentral()
+}
+
+group = "com.sidneysimmons.simple.postgres"
+version = "0.0.1"
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    // Project
+    implementation "org.seleniumhq.selenium:selenium-java:3.141.59"
+    
+    // Lombok
+    compileOnly "org.projectlombok:lombok:1.18.8"
+    annotationProcessor "org.projectlombok:lombok:1.18.8"
+    
+    // Testing
+    testImplementation "org.springframework.boot:spring-boot-starter-test:2.2.6.RELEASE"
+    testImplementation "org.mockito:mockito-core:2.28.2"
+}
+
+// Set the correct web driver based on the operating system
+import org.gradle.internal.os.OperatingSystem;
+test {
+    String chromeWebDriverPath = null;
+    if (OperatingSystem.current().isWindows()) {
+        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_win32/chromedriver.exe").getAbsolutePath();
+    } else if (OperatingSystem.current().isLinux()) {
+        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_linux64/chromedriver").getAbsolutePath();
+    } else if (OperatingSystem.current().isMacOsX()) {
+        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_mac64/chromedriver").getAbsolutePath();
+    } else {
+        throw new RuntimeException("Cannott determine the current operating system.");
+    }
+    systemProperty "webdriver.chrome.driver", chromeWebDriverPath
+}
+
+// Force the test task to always run even if the code hasn't changed
+test.outputs.upToDateWhen { false }
