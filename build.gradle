@@ -30,14 +30,15 @@ import org.gradle.internal.os.OperatingSystem;
 test {
     String chromeWebDriverPath = null;
     if (OperatingSystem.current().isWindows()) {
-        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_win32/chromedriver.exe").getAbsolutePath();
+        chromeWebDriverPath = file("./drivers/chromedriver_v87/chromedriver_win32/chromedriver.exe").getAbsolutePath();
     } else if (OperatingSystem.current().isLinux()) {
-        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_linux64/chromedriver").getAbsolutePath();
+        chromeWebDriverPath = file("./drivers/chromedriver_v87/chromedriver_linux64/chromedriver").getAbsolutePath();
     } else if (OperatingSystem.current().isMacOsX()) {
-        chromeWebDriverPath = file("./drivers/chromedriver_v81/chromedriver_mac64/chromedriver").getAbsolutePath();
+        chromeWebDriverPath = file("./drivers/chromedriver_v87/chromedriver_mac64/chromedriver").getAbsolutePath();
     } else {
         throw new RuntimeException("Cannott determine the current operating system.");
     }
+    println "Setting path to web driver: ${chromeWebDriverPath}"
     systemProperty "webdriver.chrome.driver", chromeWebDriverPath
 }
 
