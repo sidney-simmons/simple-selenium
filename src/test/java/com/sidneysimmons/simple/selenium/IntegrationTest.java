@@ -1,6 +1,7 @@
 package com.sidneysimmons.simple.selenium;
 
 import java.time.Duration;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -13,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * Example intergation tests using JUnit and Selenium.
+ * Example integration tests using JUnit and Selenium.
  * 
  * @author Sidney Simmons
  */
@@ -36,7 +37,9 @@ public class IntegrationTest {
      */
     @AfterClass
     public static void tearDownAfterClass() {
-        webDriver.quit();
+        if (webDriver != null) {
+            webDriver.quit();
+        }
     }
 
     /**
