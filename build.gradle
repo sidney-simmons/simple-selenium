@@ -6,7 +6,7 @@ repositories {
     mavenCentral()
 }
 
-group = "com.sidneysimmons.simple.postgres"
+group = "com.sidneysimmons.simple.selenium"
 version = "0.0.1"
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
