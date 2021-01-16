@@ -1,5 +1,4 @@
 plugins {
-    id "com.sidneysimmons.gradle-plugin-external-properties" version "1.0.0"
     id "java"
 }
 
